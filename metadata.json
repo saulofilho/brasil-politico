@@ -1,0 +1,6 @@
+{
+  "name": "Brasil Político - Radar Nacional e Guia Eleitoral",
+  "description": "Plataforma cívica de transparência da política nacional brasileira: busca intuitiva de políticos e partidos, mapa interativo dos 26 estados e DF, índice de integridade e processos judiciais públicos, checagem de fake news com IA, simulador eleitoral, monitor de leis e consultas populares.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
