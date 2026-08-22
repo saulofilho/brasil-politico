@@ -36,8 +36,11 @@ export default function App() {
         const parsed = JSON.parse(saved);
         return LEGISLATION_DATA.map(l => ({
           ...l,
-          popularVotesPro: parsed[l.id]?.pro ?? l.popularVotesPro,
-          popularVotesAgainst: parsed[l.id]?.against ?? l.popularVotesAgainst
+          publicConsultation: {
+            ...l.publicConsultation,
+            votesFavor: parsed[l.id]?.pro ?? l.publicConsultation.votesFavor,
+            votesContra: parsed[l.id]?.against ?? l.publicConsultation.votesContra,
+          }
         }));
       } catch (e) {
         return LEGISLATION_DATA;
@@ -146,7 +149,7 @@ export default function App() {
     const newPost: ForumPost = {
       id: `post-${Date.now()}`,
       title: newPostData.title,
-      category: newPostData.category,
+      category: newPostData.category as any,
       content: newPostData.content,
       author: newPostData.author,
       date: 'Agora',
@@ -200,7 +203,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-emerald-500 selection:text-slate-950">
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 flex flex-col font-sans selection:bg-emerald-500 selection:text-slate-950">
       
       {/* Navigation Header */}
       <Navbar
@@ -234,8 +237,8 @@ export default function App() {
         }}
       />
 
-      {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Main Content Area - High Density Spacing */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-4 lg:px-6 py-4">
         
         {/* TAB 1: MAPA & ESTADOS */}
         {activeTab === 'mapa' && (
@@ -331,19 +334,19 @@ export default function App() {
         onClose={() => setIsCivicChatOpen(false)}
       />
 
-      {/* Footer */}
-      <footer className="bg-slate-900 border-t border-slate-800 py-8 text-xs text-slate-400">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-white">Brasil Político</span>
-            <span>— Plataforma Cívica e Aberta de Transparência</span>
-          </div>
+      {/* High Density Footer */}
+      <footer className="bg-slate-200 px-4 sm:px-6 py-2.5 border-t border-slate-300 flex flex-col sm:flex-row justify-between items-center text-[10px] text-slate-600 font-medium gap-2">
+        <div className="flex items-center gap-3">
+          <span className="font-bold text-slate-800">© 2026 VigíliaCidadã / Brasil Político</span>
+          <span>•</span>
+          <span>Transparência Pública & Dados Abertos</span>
+          <span>•</span>
+          <span className="text-emerald-700 font-mono">Node &gt;= 20</span>
+        </div>
 
-          <div className="flex items-center gap-4 text-slate-400">
-            <span>Fontes: TSE, STF, Câmara, Senado e TCU</span>
-            <span>•</span>
-            <span className="text-emerald-400">Compatível com Node &gt;= 20 e GitHub Pages</span>
-          </div>
+        <div className="flex items-center gap-3">
+          <span className="flex items-center gap-1"><span className="w-2 h-2 bg-emerald-500 rounded-full"></span> Sistema Online</span>
+          <span className="flex items-center gap-1"><span className="w-2 h-2 bg-blue-500 rounded-full"></span> Dados Sincronizados (TSE / Gov.br)</span>
         </div>
       </footer>
 

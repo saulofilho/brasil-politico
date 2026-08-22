@@ -1759,3 +1759,8 @@ export const CANDIDATES_SIMULATOR: CandidateForSim[] = [
     ]
   }
 ];
+
+// Compatibility aliases
+export const BRAZIL_STATES_DATA = STATES_DATA;
+export const LEGISLATION_DATA = LEGISLATIONS_DATA;
+

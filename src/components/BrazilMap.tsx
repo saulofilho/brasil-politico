@@ -100,33 +100,33 @@ export const BrazilMap: React.FC<BrazilMapProps> = ({
   const regionsList: (RegionName | 'Todas')[] = ['Todas', 'Sudeste', 'Nordeste', 'Sul', 'Norte', 'Centro-Oeste'];
 
   return (
-    <div className="space-y-6">
-      {/* Section Header */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    <div className="space-y-4">
+      {/* Section Header - High Density */}
+      <div className="bg-white border border-slate-200 rounded-xl p-3.5 sm:p-4 shadow-xs">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
           <div>
-            <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-1">
-              <MapPin className="h-4 w-4" /> Mapa Federativo Interativo
+            <div className="flex items-center gap-1.5 text-emerald-700 text-[10px] font-bold uppercase tracking-widest mb-0.5">
+              <MapPin className="h-3.5 w-3.5" /> Mapa Federativo Interativo
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            <h2 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
               Panorama Político dos 26 Estados e DF
             </h2>
-            <p className="text-slate-400 text-sm mt-1 max-w-2xl">
-              Clique em qualquer estado no mapa ou na lista para inspecionar governadores, senadores, bancadas federais, ranking de transparência pública e pautas prioritárias.
+            <p className="text-slate-500 text-xs mt-0.5 max-w-3xl leading-relaxed">
+              Inspecione governadores, senadores, bancadas federais, ranking de transparência pública e pautas prioritárias de cada unidade federativa.
             </p>
           </div>
 
           {/* Region Tabs Filter */}
-          <div className="flex items-center gap-1.5 flex-wrap bg-slate-950/80 p-1.5 rounded-xl border border-slate-800 self-start lg:self-center">
+          <div className="flex items-center gap-1 flex-wrap bg-slate-100 p-1 rounded-lg border border-slate-200 self-start lg:self-center">
             {regionsList.map(r => (
               <button
                 key={r}
                 id={`region-filter-${r.toLowerCase()}`}
                 onClick={() => setActiveRegion(r)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-all ${
                   activeRegion === r
-                    ? 'bg-emerald-500 text-slate-950 shadow-md font-bold'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                    ? 'bg-emerald-700 text-white shadow-xs font-bold'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200'
                 }`}
               >
                 {r}
@@ -137,26 +137,26 @@ export const BrazilMap: React.FC<BrazilMapProps> = ({
       </div>
 
       {/* Main Grid: Interactive Map + State Detail Card */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
         
         {/* Interactive SVG Stage (7 cols) */}
-        <div className="lg:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between relative overflow-hidden">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <Layers className="h-4 w-4 text-emerald-400" />
-              <span className="text-sm font-bold text-white">Mapa Cartográfico Interativo</span>
+        <div className="lg:col-span-7 bg-white border border-slate-200 rounded-xl p-3.5 sm:p-4 shadow-xs flex flex-col justify-between relative overflow-hidden">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-1.5">
+              <Layers className="h-3.5 w-3.5 text-emerald-700" />
+              <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">Mapa Cartográfico Interativo</span>
             </div>
-            <div className="text-xs text-slate-400">
+            <div className="text-[11px] text-slate-500 font-medium">
               {hoveredUf ? `UF: ${hoveredUf}` : 'Passe o cursor ou toque no estado'}
             </div>
           </div>
 
           {/* SVG Map Container */}
-          <div className="relative w-full aspect-[4/3] bg-gradient-to-b from-slate-950 to-slate-900 rounded-xl border border-slate-800 p-2 sm:p-4 flex items-center justify-center">
+          <div className="relative w-full aspect-[4/3] bg-slate-900 rounded-lg border border-slate-800 p-2 flex items-center justify-center">
             <svg 
               viewBox="0 0 570 560" 
-              className="w-full h-full max-h-[500px] select-none"
-              style={{ filter: 'drop-shadow(0 10px 15px rgba(0,0,0,0.5))' }}
+              className="w-full h-full max-h-[460px] select-none"
+              style={{ filter: 'drop-shadow(0 6px 10px rgba(0,0,0,0.3))' }}
             >
               {/* Background grid lines */}
               <defs>
@@ -192,22 +192,22 @@ export const BrazilMap: React.FC<BrazilMapProps> = ({
                       y={node.y}
                       width={node.w}
                       height={node.h}
-                      rx={8}
+                      rx={6}
                       fill={isSelected ? '#10b981' : isHovered ? '#059669' : regColor.fill}
-                      stroke={isSelected ? '#34d399' : isHovered ? '#ffffff' : '#334155'}
-                      strokeWidth={isSelected ? 3 : isHovered ? 2 : 1}
+                      stroke={isSelected ? '#facc15' : isHovered ? '#ffffff' : '#334155'}
+                      strokeWidth={isSelected ? 2.5 : isHovered ? 2 : 1}
                       className="transition-all duration-200"
                     />
 
                     {/* State UF Text */}
                     <text
                       x={node.x + node.w / 2}
-                      y={node.y + node.h / 2 + (node.h > 40 ? -4 : 4)}
+                      y={node.y + node.h / 2 + (node.h > 40 ? -3 : 3)}
                       textAnchor="middle"
                       dominantBaseline="middle"
                       fill={isSelected ? '#022c22' : '#ffffff'}
                       fontWeight="bold"
-                      fontSize={node.w > 60 ? 14 : 11}
+                      fontSize={node.w > 60 ? 13 : 11}
                       className="pointer-events-none"
                     >
                       {node.uf}
@@ -217,11 +217,11 @@ export const BrazilMap: React.FC<BrazilMapProps> = ({
                     {node.h > 45 && stateData && (
                       <text
                         x={node.x + node.w / 2}
-                        y={node.y + node.h / 2 + 13}
+                        y={node.y + node.h / 2 + 12}
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill={isSelected ? '#064e3b' : '#94a3b8'}
-                        fontSize={9}
+                        fontSize={8.5}
                         fontWeight="600"
                         className="pointer-events-none"
                       >
@@ -233,11 +233,18 @@ export const BrazilMap: React.FC<BrazilMapProps> = ({
               })}
             </svg>
 
+            {/* Density Legend overlay */}
+            <div className="absolute bottom-2 right-2 bg-slate-950/90 backdrop-blur-xs p-1.5 rounded border border-slate-800 flex flex-col gap-1 text-[9px] text-slate-300">
+              <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-emerald-500"></span> Alta Bancada (&gt; 30)</div>
+              <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-amber-500"></span> Média (15 a 30)</div>
+              <div className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-blue-500"></span> Mínima (8 a 14)</div>
+            </div>
+
             {/* Floating State Tooltip on Hover */}
             {hoveredUf && (
-              <div className="absolute top-4 left-4 bg-slate-900/95 backdrop-blur-md border border-slate-700 px-3 py-2 rounded-lg shadow-xl pointer-events-none z-10 text-xs">
+              <div className="absolute top-3 left-3 bg-slate-900/95 backdrop-blur-md border border-slate-700 px-2.5 py-1.5 rounded-md shadow-lg pointer-events-none z-10 text-xs">
                 <span className="font-bold text-white">{states.find(s => s.uf === hoveredUf)?.name || hoveredUf} ({hoveredUf})</span>
-                <div className="text-slate-400 text-[11px] mt-0.5">
+                <div className="text-slate-400 text-[10px]">
                   Gov: {states.find(s => s.uf === hoveredUf)?.governor} ({states.find(s => s.uf === hoveredUf)?.governorParty})
                 </div>
               </div>
@@ -245,16 +252,16 @@ export const BrazilMap: React.FC<BrazilMapProps> = ({
           </div>
 
           {/* Quick UF Badges scrollbar below map */}
-          <div className="mt-4 flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+          <div className="mt-3 flex items-center gap-1 overflow-x-auto pb-1 scrollbar-none">
             {states.map(s => (
               <button
                 key={s.uf}
                 id={`btn-uf-${s.uf.toLowerCase()}`}
                 onClick={() => onSelectState(s)}
-                className={`px-2.5 py-1 rounded-md text-xs font-bold transition-all whitespace-nowrap ${
+                className={`px-2 py-0.5 rounded text-[11px] font-bold transition-all whitespace-nowrap ${
                   activeState.uf === s.uf
-                    ? 'bg-emerald-500 text-slate-950 ring-2 ring-emerald-400 font-extrabold'
-                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700'
+                    ? 'bg-emerald-700 text-white font-extrabold shadow-xs'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200'
                 }`}
               >
                 {s.uf}
@@ -263,60 +270,60 @@ export const BrazilMap: React.FC<BrazilMapProps> = ({
           </div>
         </div>
 
-        {/* Selected State Inspector Card (5 cols) */}
-        <div className="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
-          <div className="space-y-5">
+        {/* Selected State Inspector Card (5 cols) - High Density */}
+        <div className="lg:col-span-5 bg-white border border-slate-200 rounded-xl p-4 shadow-xs flex flex-col justify-between">
+          <div className="space-y-3">
             {/* Header with UF and Capital */}
-            <div className="flex items-start justify-between border-b border-slate-800 pb-4">
+            <div className="flex items-start justify-between border-b border-slate-100 pb-3">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-3xl font-black text-white">{activeState.name}</span>
-                  <span className="bg-emerald-950 text-emerald-300 font-mono font-bold text-xs px-2.5 py-1 rounded-lg border border-emerald-800">
+                  <span className="text-2xl font-black text-slate-900">{activeState.name}</span>
+                  <span className="bg-emerald-100 text-emerald-800 font-mono font-bold text-xs px-2 py-0.5 rounded border border-emerald-300">
                     {activeState.uf}
                   </span>
                 </div>
-                <div className="text-xs text-slate-400 mt-1 flex items-center gap-3">
-                  <span>Região: <strong className="text-slate-200">{activeState.region}</strong></span>
+                <div className="text-[11px] text-slate-500 mt-0.5 flex items-center gap-2">
+                  <span>Região: <strong className="text-slate-700">{activeState.region}</strong></span>
                   <span>•</span>
-                  <span>Capital: <strong className="text-slate-200">{activeState.capital}</strong></span>
+                  <span>Capital: <strong className="text-slate-700">{activeState.capital}</strong></span>
                 </div>
               </div>
 
               <div className="text-right">
-                <div className="text-[10px] uppercase font-bold text-slate-400">Transparência</div>
-                <div className="text-lg font-extrabold text-amber-400 flex items-center justify-end gap-1">
-                  <Award className="h-4 w-4" /> #{activeState.transparencyRank}º <span className="text-xs text-slate-400 font-normal">/ 27</span>
+                <div className="text-[9px] uppercase font-bold text-slate-400">Transparência</div>
+                <div className="text-base font-extrabold text-emerald-700 flex items-center justify-end gap-1">
+                  <Award className="h-3.5 w-3.5 text-amber-500" /> #{activeState.transparencyRank}º <span className="text-[10px] text-slate-400 font-normal">/ 27</span>
                 </div>
               </div>
             </div>
 
             {/* Executive Leadership */}
-            <div className="bg-slate-950/70 border border-slate-800/80 rounded-xl p-4 space-y-2">
-              <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                <Building2 className="h-3.5 w-3.5 text-emerald-400" /> Poder Executivo Estadual
+            <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2.5 space-y-1">
+              <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
+                <Building2 className="h-3 w-3 text-emerald-700" /> Poder Executivo Estadual
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-400">Governador(a):</span>
-                <span className="text-sm font-bold text-white">
-                  {activeState.governor} <span className="text-xs font-semibold text-emerald-400">({activeState.governorParty})</span>
+                <span className="text-xs text-slate-600">Governador(a):</span>
+                <span className="text-xs font-bold text-slate-900">
+                  {activeState.governor} <span className="text-[11px] font-semibold text-emerald-700">({activeState.governorParty})</span>
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-400">Vice-Governador(a):</span>
-                <span className="text-xs font-medium text-slate-300">{activeState.viceGovernor}</span>
+                <span className="text-xs text-slate-600">Vice:</span>
+                <span className="text-xs font-medium text-slate-700">{activeState.viceGovernor}</span>
               </div>
             </div>
 
             {/* Senators for this State */}
-            <div className="bg-slate-950/70 border border-slate-800/80 rounded-xl p-4 space-y-2">
-              <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                <Users className="h-3.5 w-3.5 text-cyan-400" /> Bancada no Senado Federal (3 vagas)
+            <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2.5 space-y-1.5">
+              <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
+                <Users className="h-3 w-3 text-blue-700" /> Bancada no Senado (3 vagas)
               </div>
-              <div className="grid grid-cols-1 gap-1.5">
+              <div className="grid grid-cols-1 gap-1">
                 {activeState.senators.map((sen, idx) => (
-                  <div key={idx} className="flex items-center justify-between text-xs bg-slate-900/90 px-3 py-1.5 rounded-lg border border-slate-800">
-                    <span className="font-medium text-slate-200">{sen.name}</span>
-                    <span className="font-bold text-cyan-400 text-[11px] px-2 py-0.5 rounded bg-cyan-950 border border-cyan-900">
+                  <div key={idx} className="flex items-center justify-between text-xs bg-white px-2.5 py-1 rounded border border-slate-200">
+                    <span className="font-medium text-slate-800">{sen.name}</span>
+                    <span className="font-bold text-blue-700 text-[10px] px-1.5 py-0.2 rounded bg-blue-50 border border-blue-200">
                       {sen.party}
                     </span>
                   </div>
@@ -325,31 +332,31 @@ export const BrazilMap: React.FC<BrazilMapProps> = ({
             </div>
 
             {/* Electoral Stats & Federal Deputies */}
-            <div className="grid grid-cols-2 gap-3">
-              <div className="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3">
-                <div className="text-[10px] text-slate-400 uppercase font-semibold">Eleitorado Ativo</div>
-                <div className="text-lg font-bold text-white mt-0.5">
-                  {activeState.electorateSize} <span className="text-xs font-normal text-slate-400">milhões</span>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2.5">
+                <div className="text-[9px] text-slate-500 uppercase font-semibold">Eleitorado Ativo</div>
+                <div className="text-base font-bold text-slate-900 mt-0.5">
+                  {activeState.electorateSize} <span className="text-[10px] font-normal text-slate-500">milhões</span>
                 </div>
               </div>
-              <div className="bg-slate-950/70 border border-slate-800/80 rounded-xl p-3">
-                <div className="text-[10px] text-slate-400 uppercase font-semibold">Deputados Federais</div>
-                <div className="text-lg font-bold text-emerald-400 mt-0.5">
-                  {activeState.deputiesFederalCount} <span className="text-xs font-normal text-slate-400">cadeiras</span>
+              <div className="bg-slate-50 border border-slate-200/80 rounded-lg p-2.5">
+                <div className="text-[9px] text-slate-500 uppercase font-semibold">Deputados Federais</div>
+                <div className="text-base font-bold text-emerald-700 mt-0.5">
+                  {activeState.deputiesFederalCount} <span className="text-[10px] font-normal text-slate-500">cadeiras</span>
                 </div>
               </div>
             </div>
 
             {/* Key Regional Issues */}
-            <div className="space-y-2">
-              <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-                <TrendingUp className="h-3.5 w-3.5 text-amber-400" /> Pautas & Prioridades Regionais
+            <div className="space-y-1">
+              <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
+                <TrendingUp className="h-3 w-3 text-amber-600" /> Pautas Prioritárias
               </div>
-              <ul className="space-y-1.5">
+              <ul className="space-y-1">
                 {activeState.keyIssues.map((issue, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-xs text-slate-300">
-                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <span>{issue}</span>
+                  <li key={idx} className="flex items-start gap-1.5 text-xs text-slate-700">
+                    <CheckCircle2 className="h-3 w-3 text-emerald-600 flex-shrink-0 mt-0.5" />
+                    <span className="line-clamp-1">{issue}</span>
                   </li>
                 ))}
               </ul>
@@ -357,14 +364,14 @@ export const BrazilMap: React.FC<BrazilMapProps> = ({
           </div>
 
           {/* Action to Explore State's Politicians */}
-          <div className="mt-6 pt-4 border-t border-slate-800">
+          <div className="mt-4 pt-3 border-t border-slate-100">
             <button
               id={`view-politicians-${activeState.uf.toLowerCase()}-btn`}
               onClick={() => onViewPoliticiansOfState(activeState.uf)}
-              className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-bold py-2.5 px-4 rounded-xl shadow-lg shadow-emerald-900/40 transition-all active:scale-95"
+              className="w-full flex items-center justify-center gap-1.5 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold py-2 px-3 rounded-lg shadow-xs transition-all active:scale-95"
             >
               <span>Ver Políticos e Candidatos de {activeState.name}</span>
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-3.5 w-3.5" />
             </button>
           </div>
         </div>

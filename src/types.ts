@@ -185,16 +185,18 @@ export interface ForumComment {
 export interface ForumPost {
   id: string;
   title: string;
-  category: 'Reforma Política' | 'Eleições 2026' | 'Combate à Corrupção' | 'Economia & Impostos' | 'Educação & Saúde' | 'Transparência Pública';
-  authorName: string;
-  authorState: string;
-  createdAt: string;
+  category: string;
+  author?: string;
+  authorName?: string;
+  authorState?: string;
+  date?: string;
+  createdAt?: string;
   content: string;
   upvotes: number;
   downvotes: number;
   userVote?: 'up' | 'down';
   commentsCount: number;
-  comments: ForumComment[];
+  comments: any[];
   pinned?: boolean;
   tags: string[];
 }

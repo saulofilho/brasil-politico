@@ -70,65 +70,65 @@ export const IntegrityWatchdog: React.FC<IntegrityWatchdogProps> = ({
   const topSavers = [...parliamentarians].sort((a, b) => a.cabinetExpensesYear - b.cabinetExpensesYear).slice(0, 3);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Header */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-white border border-slate-200 rounded-xl p-3.5 sm:p-4 shadow-xs">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div>
-            <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-1">
-              <Scale className="h-4 w-4" /> Monitor de Probidade & Transparência
+            <div className="flex items-center gap-1.5 text-emerald-700 text-[10px] font-bold uppercase tracking-widest mb-0.5">
+              <Scale className="h-3.5 w-3.5" /> Monitor de Probidade & Transparência
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            <h2 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
               Processos Judiciais Públicos & Uso de Verba
             </h2>
-            <p className="text-slate-400 text-sm mt-1 max-w-2xl">
-              Acompanhamento detalhado de inquéritos, ações penais e processos de improbidade perante o STF, STJ, TSE, TRFs e TCU, além do monitoramento de gastos da cota parlamentar (CEAP).
+            <p className="text-slate-500 text-xs mt-0.5 max-w-3xl leading-relaxed">
+              Acompanhamento de inquéritos, ações penais e processos de improbidade perante o STF, STJ, TSE, TRFs e TCU, além do monitoramento de gastos da cota parlamentar (CEAP).
             </p>
           </div>
 
-          <div className="flex items-center gap-2 bg-slate-950 p-2.5 rounded-xl border border-slate-800 self-start md:self-center">
-            <ShieldCheck className="h-5 w-5 text-emerald-400" />
-            <div className="text-xs">
-              <span className="text-slate-400 block text-[10px] uppercase font-bold">Critério Jurídico</span>
-              <span className="text-white font-semibold">Fontes Oficiais & Presunção de Inocência</span>
+          <div className="flex items-center gap-2 bg-slate-50 p-2 rounded-lg border border-slate-200 self-start md:self-center">
+            <ShieldCheck className="h-4 w-4 text-emerald-700" />
+            <div className="text-[11px]">
+              <span className="text-slate-400 block text-[9px] uppercase font-bold">Critério Jurídico</span>
+              <span className="text-slate-800 font-semibold">Fontes Oficiais & Presunção de Inocência</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Top Highlights Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5">
         
         {/* Top Integrity Index */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-lg space-y-3">
+        <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-xs space-y-2.5">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Award className="h-4 w-4 text-emerald-400" />
-              <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+            <div className="flex items-center gap-1.5">
+              <Award className="h-4 w-4 text-emerald-700" />
+              <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
                 Maiores Índices de Transparência & Probidade
               </h3>
             </div>
-            <span className="text-[10px] text-slate-400">Score 0-100</span>
+            <span className="text-[10px] text-slate-400 font-mono">Score 0-100</span>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-1.5">
             {topIntegrity.map(pol => (
               <div 
                 key={pol.id}
                 onClick={() => onViewPolitician(pol)}
-                className="flex items-center justify-between bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 hover:bg-slate-800/60 cursor-pointer transition-colors"
+                className="flex items-center justify-between bg-slate-50 p-2 rounded-lg border border-slate-200/80 hover:bg-slate-100 cursor-pointer transition-colors"
               >
-                <div className="flex items-center gap-2.5">
-                  <img src={pol.photo} alt={pol.name} className="h-9 w-9 rounded-xl object-cover" />
+                <div className="flex items-center gap-2">
+                  <img src={pol.photo} alt={pol.name} className="h-7 w-7 rounded-md object-cover border border-slate-200" />
                   <div>
-                    <div className="text-xs font-bold text-white">{pol.popularName}</div>
-                    <div className="text-[10px] text-slate-400">{pol.party} • {pol.role} ({pol.state})</div>
+                    <div className="text-xs font-bold text-slate-900">{pol.popularName}</div>
+                    <div className="text-[10px] text-slate-500">{pol.party} • {pol.role} ({pol.state})</div>
                   </div>
                 </div>
 
                 <div className="text-right">
-                  <span className="text-sm font-black text-emerald-400">{pol.integrityScore}</span>
-                  <span className="text-[10px] text-slate-500 block">Presença: {pol.attendanceRate}%</span>
+                  <span className="text-sm font-black text-emerald-700">{pol.integrityScore}</span>
+                  <span className="text-[9px] text-slate-400 block">Presença: {pol.attendanceRate}%</span>
                 </div>
               </div>
             ))}
@@ -136,18 +136,18 @@ export const IntegrityWatchdog: React.FC<IntegrityWatchdogProps> = ({
         </div>
 
         {/* Top Cabinet Savers */}
-        <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-lg space-y-3">
+        <div className="bg-white border border-slate-200 rounded-xl p-3.5 shadow-xs space-y-2.5">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <DollarSign className="h-4 w-4 text-amber-400" />
-              <h3 className="text-sm font-bold text-white uppercase tracking-wider">
+            <div className="flex items-center gap-1.5">
+              <DollarSign className="h-4 w-4 text-amber-600" />
+              <h3 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
                 Maior Economia de Cota Parlamentar (Gabinete)
               </h3>
             </div>
-            <span className="text-[10px] text-slate-400">Dados Abertos Câmara/Senado</span>
+            <span className="text-[10px] text-slate-400 font-mono">Dados Abertos</span>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-1.5">
             {topSavers.map(pol => {
               const savedAmount = pol.cabinetBudgetLimit - pol.cabinetExpensesYear;
               const savedPct = Math.round((savedAmount / pol.cabinetBudgetLimit) * 100);
@@ -156,21 +156,21 @@ export const IntegrityWatchdog: React.FC<IntegrityWatchdogProps> = ({
                 <div 
                   key={pol.id}
                   onClick={() => onViewPolitician(pol)}
-                  className="flex items-center justify-between bg-slate-950 p-2.5 rounded-xl border border-slate-800/80 hover:bg-slate-800/60 cursor-pointer transition-colors"
+                  className="flex items-center justify-between bg-slate-50 p-2 rounded-lg border border-slate-200/80 hover:bg-slate-100 cursor-pointer transition-colors"
                 >
-                  <div className="flex items-center gap-2.5">
-                    <img src={pol.photo} alt={pol.name} className="h-9 w-9 rounded-xl object-cover" />
+                  <div className="flex items-center gap-2">
+                    <img src={pol.photo} alt={pol.name} className="h-7 w-7 rounded-md object-cover border border-slate-200" />
                     <div>
-                      <div className="text-xs font-bold text-white">{pol.popularName}</div>
-                      <div className="text-[10px] text-slate-400">Gasto: R$ {pol.cabinetExpensesYear.toLocaleString('pt-BR')}</div>
+                      <div className="text-xs font-bold text-slate-900">{pol.popularName}</div>
+                      <div className="text-[10px] text-slate-500">Gasto: R$ {pol.cabinetExpensesYear.toLocaleString('pt-BR')}</div>
                     </div>
                   </div>
 
                   <div className="text-right">
-                    <span className="text-xs font-bold text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-900">
+                    <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-1.5 py-0.2 rounded border border-emerald-200">
                       Economizou {savedPct}%
                     </span>
-                    <span className="text-[10px] text-slate-400 block mt-0.5">
+                    <span className="text-[9px] text-slate-500 block mt-0.5">
                       R$ {savedAmount.toLocaleString('pt-BR')} poupados
                     </span>
                   </div>
@@ -183,23 +183,23 @@ export const IntegrityWatchdog: React.FC<IntegrityWatchdogProps> = ({
       </div>
 
       {/* Judicial Processes Search and List */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-5">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="bg-white border border-slate-200 rounded-xl p-3.5 sm:p-4 shadow-xs space-y-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
           <div>
-            <h3 className="text-lg font-bold text-white flex items-center gap-2">
-              <Scale className="h-5 w-5 text-emerald-400" /> Registro de Processos Judiciais Públicos
+            <h3 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
+              <Scale className="h-4 w-4 text-emerald-700" /> Registro de Processos Judiciais Públicos
             </h3>
-            <p className="text-xs text-slate-400">
-              {filteredProcesses.length} registro(s) encontrado(s) nos tribunais superiores
+            <p className="text-[11px] text-slate-500">
+              {filteredProcesses.length} registro(s) indexado(s) nos tribunais superiores
             </p>
           </div>
 
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-1.5 flex-wrap">
             {/* Court Select */}
             <select
               value={selectedCourt}
               onChange={(e) => setSelectedCourt(e.target.value)}
-              className="bg-slate-950 text-xs text-slate-200 px-3 py-2 rounded-lg border border-slate-700 focus:outline-none"
+              className="bg-slate-50 text-xs text-slate-800 px-2.5 py-1.5 rounded-md border border-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-600"
             >
               {courts.map(c => (
                 <option key={c} value={c}>{c === 'TODOS' ? 'Todos os Tribunais' : `Tribunal: ${c}`}</option>
@@ -210,7 +210,7 @@ export const IntegrityWatchdog: React.FC<IntegrityWatchdogProps> = ({
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="bg-slate-950 text-xs text-slate-200 px-3 py-2 rounded-lg border border-slate-700 focus:outline-none"
+              className="bg-slate-50 text-xs text-slate-800 px-2.5 py-1.5 rounded-md border border-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-600"
             >
               {statuses.map(s => (
                 <option key={s} value={s}>{s === 'TODOS' ? 'Todos os Status' : s}</option>
@@ -221,90 +221,90 @@ export const IntegrityWatchdog: React.FC<IntegrityWatchdogProps> = ({
 
         {/* Process Search Input */}
         <div className="relative">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Pesquisar por número do processo, político envolvido ou tipo de crime/improbidade..."
-            className="w-full bg-slate-950 text-xs text-slate-100 placeholder-slate-400 pl-10 pr-4 py-2.5 rounded-xl border border-slate-700 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+            className="w-full bg-slate-50 text-xs text-slate-800 placeholder-slate-400 pl-8 pr-3 py-1.5 rounded-md border border-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-600"
           />
         </div>
 
         {/* Processes List */}
-        <div className="space-y-4">
+        <div className="space-y-2.5">
           {filteredProcesses.length === 0 ? (
-            <div className="text-center py-10 bg-slate-950 rounded-xl border border-slate-800 p-6 text-slate-400 text-xs">
+            <div className="text-center py-8 bg-slate-50 rounded-xl border border-slate-200 p-4 text-slate-500 text-xs">
               Nenhum processo judicial encontrado para os filtros selecionados.
             </div>
           ) : (
             filteredProcesses.map(({ process, politician }) => (
               <div 
                 key={process.id}
-                className="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3 text-xs hover:border-slate-700 transition-colors"
+                className="bg-slate-50 p-3 rounded-xl border border-slate-200 space-y-2 text-xs hover:border-slate-300 transition-colors"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-850 pb-2.5">
-                  <div className="flex items-center gap-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-slate-200 pb-2">
+                  <div className="flex items-center gap-2.5">
                     <img 
                       src={politician.photo} 
                       alt={politician.name} 
-                      className="h-10 w-10 rounded-xl object-cover border border-slate-700" 
+                      className="h-8 w-8 rounded-lg object-cover border border-slate-200" 
                     />
                     <div>
                       <div 
                         onClick={() => onViewPolitician(politician)}
-                        className="font-extrabold text-sm text-white hover:text-emerald-400 cursor-pointer"
+                        className="font-bold text-xs text-slate-900 hover:text-emerald-700 cursor-pointer"
                       >
                         {politician.popularName} ({politician.party} - {politician.state})
                       </div>
-                      <span className="text-[10px] text-slate-400 font-mono">
+                      <span className="text-[10px] text-slate-500 font-mono">
                         Número no Tribunal: <strong>{process.processNumber}</strong>
                       </span>
                     </div>
                   </div>
 
-                  <span className={`self-start sm:self-center px-3 py-1 rounded-full font-bold uppercase text-[10px] ${
+                  <span className={`self-start sm:self-center px-2 py-0.5 rounded font-bold uppercase text-[9px] ${
                     process.status === 'Absolvido' || process.status === 'Arquivado / Prescrito'
-                      ? 'bg-emerald-950 text-emerald-300 border border-emerald-800'
-                      : 'bg-rose-950 text-rose-300 border border-rose-800'
+                      ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+                      : 'bg-rose-100 text-rose-800 border border-rose-200'
                   }`}>
                     {process.status}
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 bg-slate-900/60 p-2.5 rounded-xl text-[11px]">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 bg-white p-2 rounded-md border border-slate-200 text-[11px]">
                   <div>
-                    <span className="text-slate-400">Órgão Judicial: </span>
-                    <strong className="text-slate-200">{process.court}</strong>
+                    <span className="text-slate-500">Órgão Judicial: </span>
+                    <strong className="text-slate-800">{process.court}</strong>
                   </div>
                   <div>
-                    <span className="text-slate-400">Ano de Abertura: </span>
-                    <strong className="text-slate-200">{process.yearStarted}</strong>
+                    <span className="text-slate-500">Ano de Abertura: </span>
+                    <strong className="text-slate-800">{process.yearStarted}</strong>
                   </div>
                   <div>
-                    <span className="text-slate-400">Última Movimentação: </span>
-                    <strong className="text-slate-200">{process.lastUpdate}</strong>
+                    <span className="text-slate-500">Última Movimentação: </span>
+                    <strong className="text-slate-800">{process.lastUpdate}</strong>
                   </div>
                 </div>
 
                 <div>
-                  <div className="text-amber-300 font-semibold mb-1">
+                  <div className="text-amber-800 font-semibold text-[11px] mb-0.5">
                     Tipo Penal / Matéria: {process.crimeType}
                   </div>
-                  <p className="text-slate-300 text-xs bg-slate-900 p-3 rounded-xl border border-slate-800 leading-relaxed">
+                  <p className="text-slate-700 text-xs bg-white p-2.5 rounded border border-slate-200 leading-relaxed">
                     {process.summary}
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between text-[11px] pt-1">
-                  <span className="text-slate-500">Consulta pública oficial indexada</span>
+                <div className="flex items-center justify-between text-[10px] pt-0.5">
+                  <span className="text-slate-400">Consulta pública oficial indexada</span>
                   <a
                     href={process.officialSourceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1"
+                    className="text-emerald-700 hover:text-emerald-800 font-semibold flex items-center gap-1"
                   >
-                    Acessar Processo no {process.court} <ExternalLink className="h-3.5 w-3.5" />
+                    Acessar Processo no {process.court} <ExternalLink className="h-3 w-3" />
                   </a>
                 </div>
               </div>
