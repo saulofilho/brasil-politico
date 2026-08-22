@@ -142,6 +142,27 @@ export interface StateData {
   mapSvgPath?: string;
 }
 
+export interface LegislationTimelineStep {
+  id: string;
+  stageNumber: number;
+  stageName: string;
+  chamberOrBody: 'Câmara dos Deputados' | 'Senado Federal' | 'Congresso Nacional' | 'Presidência da República' | 'STF' | 'Sociedade Civil';
+  date: string;
+  status: 'completed' | 'current' | 'upcoming';
+  summary: string;
+  voteResult?: {
+    favor: number;
+    contra: number;
+    abstencoes?: number;
+    quorumRequired?: string;
+    approved: boolean;
+  };
+  reporter?: string; // Relator(a)
+  officialDocNumber?: string;
+  keyMilestone?: string;
+  details?: string;
+}
+
 export interface Legislation {
   id: string;
   code: string;
@@ -156,6 +177,7 @@ export interface Legislation {
   urgency: boolean;
   plainTextSummary: string;
   keyPoints: string[];
+  timeline?: LegislationTimelineStep[];
   publicConsultation: {
     totalVotes: number;
     votesFavor: number;

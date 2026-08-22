@@ -1263,6 +1263,117 @@ export const LEGISLATIONS_DATA: Legislation[] = [
       'Mecanismo de devolução de impostos (Cashback) para inscritos no CadÚnico',
       'Imposto Seletivo sobre produtos prejudiciais à saúde ou ao meio ambiente'
     ],
+    timeline: [
+      {
+        id: 'leg-1-step-1',
+        stageNumber: 1,
+        stageName: 'Apresentação & Admissibilidade na CCJ',
+        chamberOrBody: 'Câmara dos Deputados',
+        date: '03/04/2019',
+        status: 'completed',
+        summary: 'Apresentação da PEC na Câmara pelo Dep. Baleia Rossi com base nos estudos do CCiF (Centro de Cidadania Fiscal) e aprovação de constitucionalidade na CCJC por 48 votos a 18.',
+        reporter: 'Dep. João Roma (PRB/BA)',
+        officialDocNumber: 'Parecer CCJC nº 1/2019',
+        voteResult: {
+          favor: 48,
+          contra: 18,
+          abstencoes: 0,
+          quorumRequired: 'Maioria Simples',
+          approved: true
+        },
+        keyMilestone: 'Admissibilidade Constitucional Concedida'
+      },
+      {
+        id: 'leg-1-step-2',
+        stageNumber: 2,
+        stageName: 'Comissão Especial Mista & Audiências Públicas',
+        chamberOrBody: 'Congresso Nacional',
+        date: '10/07/2019 - 22/06/2023',
+        status: 'completed',
+        summary: 'Criação de Grupo de Trabalho e Comissão Especial para unificação das propostas PEC 45 e PEC 110. Realização de 35 audiências públicas com governadores, prefeitos e setores produtivos.',
+        reporter: 'Dep. Aguinaldo Ribeiro (PP/PB)',
+        officialDocNumber: 'Relatório Final GT Reforma Tributária',
+        keyMilestone: 'Acordo Federativo para IVA Dual e Fundo de Desenvolvimento Regional'
+      },
+      {
+        id: 'leg-1-step-3',
+        stageNumber: 3,
+        stageName: 'Votação em 2 Turnos no Plenário da Câmara',
+        chamberOrBody: 'Câmara dos Deputados',
+        date: '07/07/2023',
+        status: 'completed',
+        summary: 'Aprovação histórica em 2 turnos com quórum qualificado (mínimo de 308 votos necessários). O texto incluiu alíquota zero para a cesta básica nacional e cashback social.',
+        reporter: 'Dep. Aguinaldo Ribeiro (PP/PB)',
+        officialDocNumber: 'Redação Final PEC 45-A/2019',
+        voteResult: {
+          favor: 382,
+          contra: 118,
+          abstencoes: 3,
+          quorumRequired: '3/5 dos Deputados (308 votos)',
+          approved: true
+        },
+        keyMilestone: 'Aprovação por ampla maioria qualificada (382x118 no 1º turno / 375x113 no 2º turno)'
+      },
+      {
+        id: 'leg-1-step-4',
+        stageNumber: 4,
+        stageName: 'Apreciação e Votação no Senado Federal',
+        chamberOrBody: 'Senado Federal',
+        date: '08/11/2023',
+        status: 'completed',
+        summary: 'O Senado aprovou o texto com alterações na CCJ e no Plenário, ampliando a trava de teto da carga tributária e detalhando o Comitê Gestor do IBS.',
+        reporter: 'Sen. Eduardo Braga (MDB/AM)',
+        officialDocNumber: 'Parecer de Plenário nº 38/2023',
+        voteResult: {
+          favor: 53,
+          contra: 24,
+          abstencoes: 0,
+          quorumRequired: '3/5 dos Senadores (49 votos)',
+          approved: true
+        },
+        keyMilestone: 'Aprovado em 2 Turnos no Senado (53x24)'
+      },
+      {
+        id: 'leg-1-step-5',
+        stageNumber: 5,
+        stageName: 'Ratificação Final na Câmara dos Deputados',
+        chamberOrBody: 'Câmara dos Deputados',
+        date: '15/12/2023',
+        status: 'completed',
+        summary: 'A Câmara apreciou as emendas do Senado Federal e consolidou o texto definitivo para promulgação constitucional imediata.',
+        reporter: 'Dep. Aguinaldo Ribeiro (PP/PB)',
+        officialDocNumber: 'Autógrafo PEC 45/2019',
+        voteResult: {
+          favor: 365,
+          contra: 118,
+          abstencoes: 2,
+          quorumRequired: '3/5 dos Deputados (308 votos)',
+          approved: true
+        },
+        keyMilestone: 'Texto definitivo aprovado e chancelado'
+      },
+      {
+        id: 'leg-1-step-6',
+        stageNumber: 6,
+        stageName: 'Promulgação Constitucional (EC nº 132/2023)',
+        chamberOrBody: 'Congresso Nacional',
+        date: '20/12/2023',
+        status: 'completed',
+        summary: 'Promulgação formal em sessão solene conjunta do Congresso Nacional, dando origem à Emenda Constitucional nº 132/2023.',
+        officialDocNumber: 'Emenda Constitucional nº 132/2023',
+        keyMilestone: 'Promulgada e incorporada à Constituição Federal de 1988'
+      },
+      {
+        id: 'leg-1-step-7',
+        stageNumber: 7,
+        stageName: 'Regulamentação (PLP 68/2024 & PLP 108/2024)',
+        chamberOrBody: 'Congresso Nacional',
+        date: '2024 - 2026',
+        status: 'current',
+        summary: 'Fase de regulamentação das alíquotas de referência, itens da cesta básica, regras do Comitê Gestor e início do período de transição tributária gradual.',
+        keyMilestone: 'Em tramitação das leis complementares regulamentadoras'
+      }
+    ],
     publicConsultation: {
       totalVotes: 48920,
       votesFavor: 35710,
@@ -1303,6 +1414,100 @@ export const LEGISLATIONS_DATA: Legislation[] = [
       'Identificação transparente de anúncios e impulsionamentos políticos eleitorais',
       'Mecanismos rápidos de remoção de conteúdos ilegais (pornografia infantil, terrorismo, incitação a suicídio e golpe de Estado)'
     ],
+    timeline: [
+      {
+        id: 'leg-2-step-1',
+        stageNumber: 1,
+        stageName: 'Apresentação no Senado Federal',
+        chamberOrBody: 'Senado Federal',
+        date: '13/05/2020',
+        status: 'completed',
+        summary: 'Apresentado pelo Senador Alessandro Vieira após desdobramentos da CPMI das Fake News com foco em coibir redes inautênticas e disparo em massa.',
+        reporter: 'Sen. Angelo Coronel (PSD/BA)',
+        officialDocNumber: 'PL 2630/2020 Original',
+        keyMilestone: 'Protocolo inicial no Senado'
+      },
+      {
+        id: 'leg-2-step-2',
+        stageNumber: 2,
+        stageName: 'Aprovação no Plenário do Senado',
+        chamberOrBody: 'Senado Federal',
+        date: '30/06/2020',
+        status: 'completed',
+        summary: 'Aprovado em sessão remota por 44 votos a 32 e encaminhado para a Câmara dos Deputados.',
+        reporter: 'Sen. Angelo Coronel (PSD/BA)',
+        officialDocNumber: 'Autógrafo Senado PL 2630/2020',
+        voteResult: {
+          favor: 44,
+          contra: 32,
+          abstencoes: 0,
+          quorumRequired: 'Maioria Simples',
+          approved: true
+        },
+        keyMilestone: 'Aprovado pelo Senado e remetido à Câmara'
+      },
+      {
+        id: 'leg-2-step-3',
+        stageNumber: 3,
+        stageName: 'Grupo de Trabalho na Câmara & Audiências',
+        chamberOrBody: 'Câmara dos Deputados',
+        date: '2021 - 2022',
+        status: 'completed',
+        summary: 'Criação do Grupo de Trabalho de Aperfeiçoamento da Legislação com mais de 40 audiências com provedores, juristas, jornalistas e organizações de direitos digitais.',
+        reporter: 'Dep. Orlando Silva (PCdoB/SP)',
+        officialDocNumber: 'Substitutivo GT-Redes',
+        keyMilestone: 'Substitutivo com foco em dever de cuidado e transparência algorítmica'
+      },
+      {
+        id: 'leg-2-step-4',
+        stageNumber: 4,
+        stageName: 'Votação do Requerimento de Urgência',
+        chamberOrBody: 'Câmara dos Deputados',
+        date: '25/04/2023',
+        status: 'completed',
+        summary: 'Aprovação de urgência urgentíssima permitindo que o projeto seja pautado diretamente no Plenário sem passar por outras comissões.',
+        officialDocNumber: 'REQ 1045/2023',
+        voteResult: {
+          favor: 238,
+          contra: 192,
+          abstencoes: 0,
+          quorumRequired: '257 votos (Maioria Absoluta)',
+          approved: true
+        },
+        keyMilestone: 'Regime de Urgência Aprovado'
+      },
+      {
+        id: 'leg-2-step-5',
+        stageNumber: 5,
+        stageName: 'Negociação de Mérito & Grupo de Trabalho de IA',
+        chamberOrBody: 'Câmara dos Deputados',
+        date: '2024 - Atual',
+        status: 'current',
+        summary: 'Fase atual de construção de consenso sobre órgão fiscalizador independente, regras para imunidade parlamentar nas redes e diretrizes sobre Inteligência Artificial.',
+        reporter: 'Dep. Orlando Silva (PCdoB/SP)',
+        keyMilestone: 'Em negociação entre líderes partidários'
+      },
+      {
+        id: 'leg-2-step-6',
+        stageNumber: 6,
+        stageName: 'Votação de Mérito no Plenário da Câmara',
+        chamberOrBody: 'Câmara dos Deputados',
+        date: 'A Definir',
+        status: 'upcoming',
+        summary: 'Votação dos destaques e redação final pelo plenário da Câmara dos Deputados.',
+        keyMilestone: 'Apreciação final pela Câmara'
+      },
+      {
+        id: 'leg-2-step-7',
+        stageNumber: 7,
+        stageName: 'Sanção ou Veto Presidencial',
+        chamberOrBody: 'Presidência da República',
+        date: 'A Definir',
+        status: 'upcoming',
+        summary: 'Prazo constitucional de 15 dias úteis para sanção expressa, parcial ou veto total pelo Presidente da República.',
+        keyMilestone: 'Decisão do Poder Executivo'
+      }
+    ],
     publicConsultation: {
       totalVotes: 73400,
       votesFavor: 39600,
@@ -1341,6 +1546,86 @@ export const LEGISLATIONS_DATA: Legislation[] = [
       'Garantia de pelo menos dois a três dias de repouso semanal remunerado',
       'Proibição expressa de redução nominal de vencimentos e salários',
       'Estímulo ao bem-estar, saúde mental e produtividade do trabalhador'
+    ],
+    timeline: [
+      {
+        id: 'leg-3-step-1',
+        stageNumber: 1,
+        stageName: 'Mobilização Social & Coleta de Assinaturas',
+        chamberOrBody: 'Sociedade Civil',
+        date: '01/11/2024 - 13/11/2024',
+        status: 'completed',
+        summary: 'Articulação popular liderada pelo Movimento VAT (Vida Além do Trabalho) e bancadas parlamentares, conquistando 216 assinaturas de deputados (superando o mínimo de 171 exigido).',
+        officialDocNumber: 'Lista de Apoiamento nº 11/2024',
+        voteResult: {
+          favor: 216,
+          contra: 0,
+          quorumRequired: 'Mínimo de 171 assinaturas (1/3 da Câmara)',
+          approved: true
+        },
+        keyMilestone: 'Assinaturas Constitucionais Atingidas (216/171)'
+      },
+      {
+        id: 'leg-3-step-2',
+        stageNumber: 2,
+        stageName: 'Protocolização na Mesa Diretora da Câmara',
+        chamberOrBody: 'Câmara dos Deputados',
+        date: '13/11/2024',
+        status: 'completed',
+        summary: 'Protocolo oficial da Proposta de Emenda Constitucional na Mesa Diretora da Câmara dos Deputados para conferência formal de assinaturas.',
+        officialDocNumber: 'PEC Protocolada sob conferência',
+        keyMilestone: 'Registro e Numeração da Proposta'
+      },
+      {
+        id: 'leg-3-step-3',
+        stageNumber: 3,
+        stageName: 'Admissibilidade na CCJC',
+        chamberOrBody: 'Câmara dos Deputados',
+        date: 'Fev/2025 - Atual',
+        status: 'current',
+        summary: 'Análise de constitucionalidade, juridicidade e técnica legislativa pela Comissão de Constituição e Justiça e de Cidadania.',
+        keyMilestone: 'Designação de Relatoria na CCJC'
+      },
+      {
+        id: 'leg-3-step-4',
+        stageNumber: 4,
+        stageName: 'Comissão Especial de Mérito & Impacto Econômico',
+        chamberOrBody: 'Câmara dos Deputados',
+        date: 'Previsto 2025',
+        status: 'upcoming',
+        summary: 'Criação de Comissão Especial composta por 34 deputados titulares para realizar audiências com centrais sindicais, confederações patronais (CNC, CNI) e economistas.',
+        keyMilestone: 'Apreciação do Relatório de Mérito'
+      },
+      {
+        id: 'leg-3-step-5',
+        stageNumber: 5,
+        stageName: 'Votação em 2 Turnos no Plenário da Câmara',
+        chamberOrBody: 'Câmara dos Deputados',
+        date: 'A Definir',
+        status: 'upcoming',
+        summary: 'Votação no Plenário da Câmara em dois turnos consecutivos, com exigência de 308 votos favoráveis em cada turno.',
+        keyMilestone: 'Quórum de 3/5 (308 votos)'
+      },
+      {
+        id: 'leg-3-step-6',
+        stageNumber: 6,
+        stageName: 'Votação em 2 Turnos no Senado Federal',
+        chamberOrBody: 'Senado Federal',
+        date: 'A Definir',
+        status: 'upcoming',
+        summary: 'Apreciação na CCJ do Senado e votação no Plenário do Senado em dois turnos, necessitando de 49 votos favoráveis.',
+        keyMilestone: 'Quórum de 3/5 (49 votos)'
+      },
+      {
+        id: 'leg-3-step-7',
+        stageNumber: 7,
+        stageName: 'Promulgação em Sessão Solene do Congresso',
+        chamberOrBody: 'Congresso Nacional',
+        date: 'A Definir',
+        status: 'upcoming',
+        summary: 'Promulgação das Mesas da Câmara e do Senado sem necessidade de sanção presidencial, integrando o novo texto ao art. 7º da CF/88.',
+        keyMilestone: 'Promulgação Constitucional'
+      }
     ],
     publicConsultation: {
       totalVotes: 125400,
@@ -1381,6 +1666,89 @@ export const LEGISLATIONS_DATA: Legislation[] = [
       'Direito do cidadão a explicação humana sobre decisões tomadas por algoritmos',
       'Remuneração e respeito a direitos autorais em bases de treinamento de IA generativa'
     ],
+    timeline: [
+      {
+        id: 'leg-4-step-1',
+        stageNumber: 1,
+        stageName: 'Comissão de Juristas do Senado (CJSUBIA)',
+        chamberOrBody: 'Senado Federal',
+        date: '30/03/2022 - 06/12/2022',
+        status: 'completed',
+        summary: 'Elaboração de anteprojeto com 900 páginas presidido pelo Ministro Ricardo Villas Bôas Cueva (STJ) e participação de 18 especialistas em direito digital e tecnologia.',
+        reporter: 'Profa. Laura Schertel Mendes',
+        officialDocNumber: 'Relatório Final CJSUBIA',
+        keyMilestone: 'Anteprojeto entregue à Presidência do Senado'
+      },
+      {
+        id: 'leg-4-step-2',
+        stageNumber: 2,
+        stageName: 'Apresentação do Projeto de Lei no Senado',
+        chamberOrBody: 'Senado Federal',
+        date: '03/05/2023',
+        status: 'completed',
+        summary: 'Apresentação formal pelo Presidente do Senado, Senador Rodrigo Pacheco, incorporando a matriz de risco e a governança ética.',
+        officialDocNumber: 'PL 2338/2023 Original',
+        keyMilestone: 'Protocolo no Senado Federal'
+      },
+      {
+        id: 'leg-4-step-3',
+        stageNumber: 3,
+        stageName: 'Comissão Temporária de Inteligência Artificial (CTIA)',
+        chamberOrBody: 'Senado Federal',
+        date: '16/08/2023 - 04/07/2024',
+        status: 'completed',
+        summary: 'A CTIA realizou 12 audiências públicas, recebeu 115 emendas de senadores e aprovou o parecer favorável do relator Senador Eduardo Gomes.',
+        reporter: 'Sen. Eduardo Gomes (PL/TO)',
+        officialDocNumber: 'Parecer CTIA nº 1/2024',
+        voteResult: {
+          favor: 14,
+          contra: 0,
+          abstencoes: 0,
+          quorumRequired: 'Maioria Simples',
+          approved: true
+        },
+        keyMilestone: 'Aprovado por unanimidade na CTIA'
+      },
+      {
+        id: 'leg-4-step-4',
+        stageNumber: 4,
+        stageName: 'Aprovação no Plenário do Senado',
+        chamberOrBody: 'Senado Federal',
+        date: '10/12/2024',
+        status: 'completed',
+        summary: 'Aprovado em votação simbólica com consenso entre governo e oposição, com inclusão do Sistema Nacional de Regulação de IA (SIA).',
+        reporter: 'Sen. Eduardo Gomes (PL/TO)',
+        officialDocNumber: 'Autógrafo PL 2338/2023',
+        voteResult: {
+          favor: 62,
+          contra: 4,
+          abstencoes: 1,
+          quorumRequired: 'Maioria Simples',
+          approved: true
+        },
+        keyMilestone: 'Aprovado no Senado e remetido à Câmara'
+      },
+      {
+        id: 'leg-4-step-5',
+        stageNumber: 5,
+        stageName: 'Apreciação na Câmara dos Deputados',
+        chamberOrBody: 'Câmara dos Deputados',
+        date: '2025 - Atual',
+        status: 'current',
+        summary: 'Tramitação nas comissões de Ciência e Tecnologia (CCTI) e Constituição e Justiça (CCJC) da Câmara dos Deputados.',
+        keyMilestone: 'Em análise pela Câmara'
+      },
+      {
+        id: 'leg-4-step-6',
+        stageNumber: 6,
+        stageName: 'Sanção Presidencial e Criação da Autoridade',
+        chamberOrBody: 'Presidência da República',
+        date: 'A Definir',
+        status: 'upcoming',
+        summary: 'Sanção do Presidente da República e estruturação do órgão regulador central (ANPD/SIA).',
+        keyMilestone: 'Entrada em vigor do Marco de IA'
+      }
+    ],
     publicConsultation: {
       totalVotes: 24100,
       votesFavor: 18900,
@@ -1418,6 +1786,97 @@ export const LEGISLATIONS_DATA: Legislation[] = [
       'Prestação de contas no portal Transferegov com plano de trabalho detalhado',
       'Fiscalização em tempo real pelo Tribunal de Contas da União (TCU) e CGU',
       'Proibição de repasses sem destinação prévia em obras ou ações de saúde/educação'
+    ],
+    timeline: [
+      {
+        id: 'leg-5-step-1',
+        stageNumber: 1,
+        stageName: 'Acordo Institucional STF x Congresso x Executivo',
+        chamberOrBody: 'STF',
+        date: '20/08/2024',
+        status: 'completed',
+        summary: 'Reunião de conciliação no Supremo Tribunal Federal sob mediação do Min. Flávio Dino, fixando a obrigação de rastreabilidade integral para liberação das emendas.',
+        officialDocNumber: 'Ata de Conciliação ADI 7688 / ADPF 854',
+        keyMilestone: 'Pacto Republicano de Transparência'
+      },
+      {
+        id: 'leg-5-step-2',
+        stageNumber: 2,
+        stageName: 'Apresentação do Projeto de Lei Complementar',
+        chamberOrBody: 'Câmara dos Deputados',
+        date: '18/10/2024',
+        status: 'completed',
+        summary: 'Deputado Rubens Pereira Jr. apresenta o texto construído conjuntamente pelas lideranças do Congresso e Ministério das Relações Institucionais.',
+        officialDocNumber: 'PLP 175/2024 Original',
+        keyMilestone: 'Protocolo de Urgência'
+      },
+      {
+        id: 'leg-5-step-3',
+        stageNumber: 3,
+        stageName: 'Aprovação no Plenário da Câmara dos Deputados',
+        chamberOrBody: 'Câmara dos Deputados',
+        date: '05/11/2024',
+        status: 'completed',
+        summary: 'Aprovado por ampla maioria de 330 votos favoráveis contra 115, com regras para emendas Pix e emendas de comissão.',
+        reporter: 'Dep. Rubens Pereira Jr. (PT/MA)',
+        officialDocNumber: 'Redação Final PLP 175/2024',
+        voteResult: {
+          favor: 330,
+          contra: 115,
+          abstencoes: 1,
+          quorumRequired: 'Maioria Absoluta (257 votos)',
+          approved: true
+        },
+        keyMilestone: 'Aprovado na Câmara dos Deputados'
+      },
+      {
+        id: 'leg-5-step-4',
+        stageNumber: 4,
+        stageName: 'Aprovação com Modificações no Senado Federal',
+        chamberOrBody: 'Senado Federal',
+        date: '13/11/2024',
+        status: 'completed',
+        summary: 'O Senado incluiu dispositivos para ampliar a fiscalização do TCU e aperfeiçoar o bloqueio de emendas em caso de contingenciamento fiscal.',
+        reporter: 'Sen. Angelo Coronel (PSD/BA)',
+        officialDocNumber: 'Parecer Senado PLP 175/2024',
+        voteResult: {
+          favor: 46,
+          contra: 18,
+          abstencoes: 0,
+          quorumRequired: 'Maioria Absoluta (41 votos)',
+          approved: true
+        },
+        keyMilestone: 'Aprovado no Senado Federal'
+      },
+      {
+        id: 'leg-5-step-5',
+        stageNumber: 5,
+        stageName: 'Votação Final na Câmara dos Deputados',
+        chamberOrBody: 'Câmara dos Deputados',
+        date: '19/11/2024',
+        status: 'completed',
+        summary: 'A Câmara acolheu parte das alterações do Senado e enviou o autógrafo final para a Presidência da República.',
+        reporter: 'Dep. Rubens Pereira Jr. (PT/MA)',
+        voteResult: {
+          favor: 356,
+          contra: 35,
+          abstencoes: 2,
+          quorumRequired: 'Maioria Absoluta (257 votos)',
+          approved: true
+        },
+        keyMilestone: 'Texto aprovado e encaminhado à sanção'
+      },
+      {
+        id: 'leg-5-step-6',
+        stageNumber: 6,
+        stageName: 'Sanção Presidencial (Lei Complementar nº 210/2024)',
+        chamberOrBody: 'Presidência da República',
+        date: '20/11/2024',
+        status: 'completed',
+        summary: 'Sancionada pelo Presidente Luiz Inácio Lula da Silva e publicada no Diário Oficial da União como Lei Complementar nº 210/2024, atendendo às condicionantes do STF.',
+        officialDocNumber: 'Lei Complementar nº 210/2024 (DOU)',
+        keyMilestone: 'Publicação no Diário Oficial da União'
+      }
     ],
     publicConsultation: {
       totalVotes: 64200,

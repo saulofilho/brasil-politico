@@ -13,9 +13,17 @@ import {
   RefreshCw,
   X,
   BookOpen,
-  Calendar
+  Calendar,
+  Clock,
+  GitCommit,
+  Building2,
+  ChevronDown,
+  ChevronUp,
+  Award,
+  Vote
 } from 'lucide-react';
 import { Legislation } from '../types';
+import { LegislationTimelineStepper } from './LegislationTimelineStepper';
 
 interface LegislationTrackerProps {
   laws: Legislation[];
@@ -40,14 +48,17 @@ export const LegislationTracker: React.FC<LegislationTrackerProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<string>('TODAS');
   const [analyzingLawId, setAnalyzingLawId] = useState<string | null>(null);
   const [aiAnalysisData, setAiAnalysisData] = useState<any | null>(null);
+  const [expandedTimelineLawId, setExpandedTimelineLawId] = useState<string | null>(laws[0]?.id || null);
 
-  const categories = ['TODAS', 'Economia & Tributário', 'Tecnologia & Direitos', 'Meio Ambiente & Clima', 'Segurança Pública', 'Educação & Trabalho', 'Saúde'];
+  const categories = ['TODAS', 'Economia', 'Tecnologia', 'Trabalho', 'Política', 'Saúde', 'Educação', 'Segurança'];
 
   const filteredLaws = laws.filter(l => {
-    const matchesSearch = l.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      l.code.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      l.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      l.author.toLowerCase().includes(searchTerm.toLowerCase());
+    const searchLower = searchTerm.toLowerCase();
+    const matchesSearch = 
+      l.title.toLowerCase().includes(searchLower) ||
+      l.code.toLowerCase().includes(searchLower) ||
+      (l.plainTextSummary || '').toLowerCase().includes(searchLower) ||
+      l.author.toLowerCase().includes(searchLower);
 
     const matchesCategory = selectedCategory === 'TODAS' || l.category === selectedCategory;
 
@@ -76,20 +87,24 @@ export const LegislationTracker: React.FC<LegislationTrackerProps> = ({
       console.warn('Fallback para resumo analítico:', err);
       setAiAnalysisData({
         plainSummary: `A proposta ${law.code} trata de ${law.title}. Seu objetivo central é atualizar os parâmetros legais sobre ${law.category.toLowerCase()}, estabelecendo novas responsabilidades para o setor público e privado.`,
-        pros: [
+        pros: law.aiAnalysis?.pros || [
           'Maior transparência e padronização de procedimentos',
           'Atendimento a demandas históricas da sociedade civil'
         ],
-        cons: [
+        cons: law.aiAnalysis?.cons || [
           'Exigência de prazo de adequação e custos operacionais',
           'Divergência entre bancadas temáticas no Congresso'
         ],
-        citizenImpact: 'Modifica diretamente direitos e deveres dos cidadãos e simplifica a prestação de serviços essenciais.',
+        citizenImpact: law.aiAnalysis?.citizenImpact || 'Modifica diretamente direitos e deveres dos cidadãos e simplifica a prestação de serviços essenciais.',
         constitutionalContext: 'Fundamentado nos artigos da Constituição de 1988 referentes à ordem econômica e direitos fundamentais.'
       });
     } finally {
       setAnalyzingLawId(null);
     }
+  };
+
+  const toggleTimeline = (lawId: string) => {
+    setExpandedTimelineLawId(prev => prev === lawId ? null : lawId);
   };
 
   return (
@@ -98,25 +113,28 @@ export const LegislationTracker: React.FC<LegislationTrackerProps> = ({
       <div className="bg-white border border-slate-200 rounded-xl p-3.5 sm:p-4 shadow-xs">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div>
-            <div className="flex items-center gap-1.5 text-emerald-700 text-[10px] font-bold uppercase tracking-widest mb-0.5">
-              <FileText className="h-3.5 w-3.5" /> Portal de Legislação & Consultas Populares
+            <div className="flex items-center gap-1.5 text-emerald-800 text-[10px] font-bold uppercase tracking-widest mb-0.5">
+              <FileText className="h-3.5 w-3.5 text-emerald-700" /> 
+              <span>Portal de Legislação & Linha do Tempo Interativa</span>
             </div>
             <h2 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
-              Projetos no Congresso & Opinião Pública
+              Projetos no Congresso & Tramitação Histórica
             </h2>
             <p className="text-slate-500 text-xs mt-0.5 max-w-3xl leading-relaxed">
-              Acompanhe Propostas de Emenda Constitucional (PEC) e Projetos de Lei (PL) em tramitação, vote nas enquetes populares e gere resumos sem juridiquês com IA.
+              Acompanhe a linha do tempo histórica de cada proposta (comissões, votações nominais em plenário e sanção), vote nas enquetes populares e gere resumos sem juridiquês com IA.
             </p>
           </div>
 
+          {/* Category Filter Pills */}
           <div className="flex items-center gap-1.5 flex-wrap">
             {categories.map(cat => (
               <button
                 key={cat}
+                id={`cat-filter-${cat}`}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-all ${
+                className={`px-2.5 py-1 rounded-md text-[11px] font-semibold transition-all cursor-pointer ${
                   selectedCategory === cat
-                    ? 'bg-emerald-700 text-white font-bold'
+                    ? 'bg-emerald-700 text-white font-bold shadow-xs'
                     : 'bg-slate-50 text-slate-600 hover:text-slate-900 border border-slate-200'
                 }`}
               >
@@ -140,27 +158,53 @@ export const LegislationTracker: React.FC<LegislationTrackerProps> = ({
         </div>
       </div>
 
+      {/* Active Featured Law Timeline (if one is selected or expanded) */}
+      {expandedTimelineLawId && (() => {
+        const featuredLaw = laws.find(l => l.id === expandedTimelineLawId);
+        if (!featuredLaw) return null;
+
+        return (
+          <div className="animate-in fade-in duration-200">
+            <LegislationTimelineStepper law={featuredLaw} />
+          </div>
+        );
+      })()}
+
       {/* Laws List */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5">
         {filteredLaws.map(law => {
           const userVote = userVotes[law.id];
           const isSubscribed = subscribedLaws.includes(law.id);
-          const totalVotes = law.popularVotesPro + law.popularVotesAgainst;
-          const proPercent = totalVotes > 0 ? Math.round((law.popularVotesPro / totalVotes) * 100) : 50;
+          const votesFavor = law.publicConsultation?.votesFavor ?? 0;
+          const votesContra = law.publicConsultation?.votesContra ?? 0;
+          const totalVotes = votesFavor + votesContra;
+          const proPercent = totalVotes > 0 ? Math.round((votesFavor / totalVotes) * 100) : 50;
           const againstPercent = 100 - proPercent;
+          const isTimelineOpen = expandedTimelineLawId === law.id;
+          const timelineStepsCount = law.timeline?.length || 0;
+          const completedStepsCount = law.timeline?.filter(s => s.status === 'completed').length || 0;
 
           return (
             <div
               key={law.id}
               id={`law-card-${law.id}`}
-              className="bg-white border border-slate-200 hover:border-slate-300 rounded-xl p-3.5 shadow-xs flex flex-col justify-between space-y-3 transition-colors"
+              className={`bg-white border rounded-xl p-3.5 shadow-xs flex flex-col justify-between space-y-3 transition-all ${
+                isTimelineOpen 
+                  ? 'border-emerald-500 ring-1 ring-emerald-300' 
+                  : 'border-slate-200 hover:border-slate-300'
+              }`}
             >
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 {/* Header: Code + Chamber + Category */}
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <span className="font-mono font-bold text-emerald-800 text-sm">{law.code}</span>
-                    <h3 className="text-xs font-bold text-slate-900 leading-snug mt-0.5">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono font-bold text-emerald-800 text-sm">{law.code}</span>
+                      <span className="text-[10px] font-bold font-mono px-1.5 py-0.2 rounded bg-slate-100 text-slate-600 border border-slate-200">
+                        {law.category}
+                      </span>
+                    </div>
+                    <h3 className="text-xs font-bold text-slate-900 leading-snug mt-1">
                       {law.title}
                     </h3>
                   </div>
@@ -170,32 +214,62 @@ export const LegislationTracker: React.FC<LegislationTrackerProps> = ({
                   </span>
                 </div>
 
-                {/* Author & Stage */}
+                {/* Author, Status and Timeline Progress Pills */}
                 <div className="flex items-center justify-between text-[11px] text-slate-500 flex-wrap gap-1.5">
-                  <span>Autoria: <strong className="text-slate-800">{law.author}</strong></span>
-                  <span className="bg-amber-100 text-amber-800 font-medium px-1.5 py-0.2 rounded border border-amber-200 text-[10px]">
-                    {law.status}
-                  </span>
+                  <span>Autoria: <strong className="text-slate-800">{law.author} ({law.authorParty})</strong></span>
+                  
+                  <div className="flex items-center gap-1.5">
+                    <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded border ${
+                      law.status === 'Sancionado' || law.status === 'Aprovado'
+                        ? 'bg-emerald-100 text-emerald-900 border-emerald-300'
+                        : 'bg-amber-100 text-amber-900 border-amber-300'
+                    }`}>
+                      {law.status}
+                    </span>
+                  </div>
                 </div>
 
-                {/* Description */}
+                {/* Plain Text Description */}
                 <p className="text-xs text-slate-700 leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-200">
-                  {law.description}
+                  {law.plainTextSummary || law.title}
                 </p>
+
+                {/* Timeline Stepper Toggle Trigger */}
+                {timelineStepsCount > 0 && (
+                  <button
+                    id={`toggle-timeline-btn-${law.id}`}
+                    onClick={() => toggleTimeline(law.id)}
+                    className={`w-full flex items-center justify-between p-2 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                      isTimelineOpen
+                        ? 'bg-emerald-800 text-white'
+                        : 'bg-slate-100 hover:bg-emerald-50 text-emerald-950 border border-slate-200 hover:border-emerald-300'
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5">
+                      <Clock className={`h-3.5 w-3.5 ${isTimelineOpen ? 'text-amber-300' : 'text-emerald-700'}`} />
+                      <span>Linha do Tempo de Tramitação ({completedStepsCount}/{timelineStepsCount} Etapas)</span>
+                    </div>
+
+                    <div className="flex items-center gap-1 text-[11px]">
+                      <span>{isTimelineOpen ? 'Recolher Linha' : 'Visualizar Etapas'}</span>
+                      {isTimelineOpen ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
+                    </div>
+                  </button>
+                )}
 
                 {/* Popular Consultation Section */}
                 <div className="bg-slate-50 p-2.5 rounded-lg border border-slate-200 space-y-2">
                   <div className="flex items-center justify-between text-xs">
                     <span className="font-bold text-slate-800 flex items-center gap-1 text-[11px]">
-                      <Users className="h-3 w-3 text-cyan-600" /> Consulta Popular Cidadã
+                      <Users className="h-3 w-3 text-emerald-700" /> Consulta Popular Cidadã
                     </span>
                     <span className="text-[10px] text-slate-500 font-mono">
-                      {totalVotes.toLocaleString('pt-BR')} votos
+                      {totalVotes.toLocaleString('pt-BR')} votos computados
                     </span>
                   </div>
 
                   {/* Progress bar */}
-                  <div className="h-2 bg-slate-200 rounded-full overflow-hidden flex">
+                  <div className="h-2 bg-slate-200 rounded-full overflow-hidden flex border border-slate-200">
                     <div 
                       style={{ width: `${proPercent}%` }} 
                       className="bg-emerald-600 transition-all duration-300" 
