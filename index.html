@@ -1,14 +1,43 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-    <meta name="description" content="An application built with Google AI Studio." />
-    <meta property="og:title" content="My Google AI Studio App" />
-    <meta property="og:description" content="An application built with Google AI Studio." />
+    
+    <!-- Favicon & Touch Icons -->
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="alternate icon" type="image/svg+xml" href="./icon.svg" />
+    <link rel="apple-touch-icon" href="./icon.svg" />
+    
+    <!-- Title and Description -->
+    <title>Brasil Político – Radar Nacional e Guia Eleitoral</title>
+    <meta name="description" content="Plataforma cívica de transparência da política nacional brasileira: busca intuitiva de políticos e partidos, mapa interativo dos 26 estados e DF, índice de integridade e processos judiciais públicos, checagem de fake news com IA, simulador eleitoral, monitor de leis e consultas populares." />
+    
+    <!-- OpenGraph Tags -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Brasil Político" />
+    <meta property="og:title" content="Brasil Político – Radar Nacional e Guia Eleitoral" />
+    <meta property="og:description" content="Plataforma cívica de transparência da política nacional brasileira: acompanhamento de leis, políticos, partidos, integridade e combate a desinformação." />
+    <meta property="og:image" content="./icon.svg" />
+
+    <!-- Twitter / X Cards -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Brasil Político – Radar Nacional e Guia Eleitoral" />
+    <meta name="twitter:description" content="Plataforma cívica de transparência da política nacional brasileira: acompanhamento de leis, políticos, partidos, integridade e combate a desinformação." />
+    <meta name="twitter:image" content="./icon.svg" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Brasil Político - Radar Nacional e Guia Eleitoral",
+      "applicationCategory": "GovernmentApplication",
+      "operatingSystem": "All",
+      "description": "Plataforma cívica de transparência da política nacional brasileira: busca intuitiva de políticos e partidos, mapa interativo dos 26 estados e DF, índice de integridade e processos judiciais públicos, checagem de fake news com IA, simulador eleitoral, monitor de leis e consultas populares.",
+      "inLanguage": "pt-BR"
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
